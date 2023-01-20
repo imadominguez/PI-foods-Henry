@@ -3,11 +3,13 @@ import {
   ADD_RECIPES,
   ORDER_RECIPES,
   ORDER_HEALSCORE,
+  GET_DIETS,
 } from "./actions";
 
 const initialState = {
   recipes: [],
   filterRecipes: [],
+  diets: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,7 +20,11 @@ const reducer = (state = initialState, action) => {
         recipes: action.payload,
         filterRecipes: action.payload,
       };
-
+    case GET_DIETS:
+      return {
+        ...state,
+        diets: action.payload,
+      };
     case FILTER_DIETS:
       let filtered = state.recipes.filter((e) => {
         return e.dataBase

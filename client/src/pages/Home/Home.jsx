@@ -9,14 +9,35 @@ const { default: axios } = require("axios");
 function Home(props) {
   const [recipes, setRecipes] = useState("");
   const [errorSearch, setErrorSearch] = useState("");
-  const [filters, setFilters] = useState();
+
   const [flag, setFlag] = useState(true);
+  // Dispatch
   const dispatch = useDispatch();
+  // useSelector para traerme el estado recipes
   const data = useSelector((state) => state.recipes);
+  // useSelector para traerme el estado filterRecipes
   const dataFilter = useSelector((state) => state.filterRecipes);
+  // useSelector para traerme el estado diets
+  const diets = useSelector((state) => state.diets);
 
   const handleChange = (e) => {
     setRecipes(e.target.value);
+  };
+
+  // Funcion para filtrar por tipos de dietas
+  const handlerFilter = (e) => {
+    dispatch(action.filterDiets(e.target.value));
+    e.target.value === "Show All" ? setFlag(true) : setFlag(false);
+  };
+
+  // Funcion para ordenar alfabeticamente
+  const handlerOrder = (e) => {
+    dispatch(action.orderRecipes(e.target.value));
+  };
+
+  // Function para ordenar por healthScore
+  const orderHealScore = (e) => {
+    dispatch(action.orderHealScore(e.target.value));
   };
   // Funcion para buscar recetas
   const onSearch = async (e) => {
@@ -33,31 +54,12 @@ function Home(props) {
     // console.log(result);
   };
 
-  // Funcion para filtrar por tipos de dietas
-  const handlerFilter = (e) => {
-    dispatch(action.filterDiets(e.target.value));
-    e.target.value === "Show All" ? setFlag(true) : setFlag(false);
-  };
-
-  // Funcion para ordenar
-  const handlerOrder = (e) => {
-    console.log("estoy en handlerOrder");
-    dispatch(action.orderRecipes(e.target.value));
-  };
-  const orderHealScore = (e) => {
-    console.log("estoy en orderHealScore");
-
-    dispatch(action.orderHealScore(e.target.value));
-  };
   useEffect(() => {
-    async function fetchData() {
-      // Esto deberia guardarlo en redux
-      const response = await axios.get("http://localhost:3001/diets");
-      setFilters(response);
-    }
-    fetchData();
+    // Esto deberia guardarlo en redux
+    dispatch(action.addDiets);
   }, []);
-  console.log(dataFilter);
+
+  // console.log(dataFilter);
   return (
     <div className={s.container}>
       <div>
@@ -65,15 +67,12 @@ function Home(props) {
         <select onChange={handlerFilter}>
           <option hidden>Filter</option>
           <option value="Show All">Show All</option>
-          {filters?.data ? (
-            filters.data.map((e, i) => (
-              <option key={i} value={e.name}>
-                {e.name}
-              </option>
-            ))
-          ) : (
-            <option hidden>Filter</option>
-          )}
+          {diets.map((e, i) => (
+            <option key={i} value={e.name}>
+              {e.name}
+            </option>
+          ))}{" "}
+          : (<option hidden>Filter</option>)
         </select>
       </div>
       <div>

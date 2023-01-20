@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 97vh;
+}
+
+.home__link {
+  padding: 5px 30px;
+  text-decoration: none;
+  background-color: darkgray;
+  color: black;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 3px;
+}

@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
+import s from "./Pagination.module.css";
 
 const Pagination = () => {
   const [page, setPage] = useState(1);
 
   const recipes = useSelector((state) => state.filterRecipes);
-  const amount = 8;
+  const amount = 3;
   const totalPages = Math.ceil(recipes.length / amount);
 
   const paginated = recipes.slice((page - 1) * amount, page * amount);
@@ -29,18 +30,20 @@ const Pagination = () => {
           </button>
         ))}
       </div>
-      {paginated?.map((e) =>
-        e.dataBase ? (
-          <Card
-            key={`db  ${e.id}`}
-            name={e.title}
-            image="https://via.placeholder.com/150"
-            diets={e.typediets.map((diet) => diet.name)}
-          />
-        ) : (
-          <Card key={e.id} name={e.title} diets={e.diets} image={e.image} />
-        )
-      )}
+      <div className={s.cards_container}>
+        {paginated?.map((e) =>
+          e.dataBase ? (
+            <Card
+              key={`db  ${e.id}`}
+              name={e.title}
+              image="https://via.placeholder.com/150"
+              diets={e.typediets.map((diet) => diet.name)}
+            />
+          ) : (
+            <Card key={e.id} name={e.title} diets={e.diets} image={e.image} />
+          )
+        )}
+      </div>
     </>
   );
 };

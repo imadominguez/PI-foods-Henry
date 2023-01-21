@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import * as action from "../../redux/actions";
 import s from "./Home.module.css";
 import Pagination from "../../components/Pagination/Pagination";
-
 import Filters from "../../components/Filters/Filters";
 
 function Home() {

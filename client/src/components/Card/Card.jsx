@@ -10,20 +10,21 @@ const Card = (props) => {
       </div>
       <div className={s.food_info}>
         <div className={s.food_info_name}>
-          <h3>{props.name}</h3>
+          <div className={s.ribbonTop}></div>
+          <h3 className={s.name}>{props.name}</h3>
+          <hr className={s.hr} />
         </div>
         <div className={s.food_diets}>
-          <div>
-            <h3>Tipos de dietas: </h3>
-          </div>
+          <h3 className={s.name_diets}>Tipos de dietas:</h3>
           <div>
             {Array.isArray(diets) ? (
-              diets.map((e, i) => <span key={e}>{e}, </span>)
+              diets.map((e, i) => <span key={e}>{e} </span>)
             ) : (
               <h3>No se encontro nada rey</h3>
             )}
           </div>
         </div>
+        <div className={s.ribbonBot}></div>
       </div>
     </article>
   );

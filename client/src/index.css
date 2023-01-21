@@ -3,14 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+#root {
+  min-height: 100vh;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(43, 41, 41);
+  background-color: #111514;
 }
 
 code {

@@ -1,26 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Atma:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap");
+
 .food_card {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  max-width: 30%;
-  min-width: 60%;
   height: 250px;
   border: 1px solid #ccc;
   border-radius: 10px;
+  border-color: #daa520;
   transition: transform 0.3s ease-in-out;
-  margin: 10px 0;
-  font-family: "board";
-  font-size: 30px;
-  font-weight: 500;
+  margin: 50px 0;
+  font-family: "Atma", cursive;
+  overflow: hidden;
+
+  font-weight: 400;
   letter-spacing: 5px;
-  text-transform: uppercase;
+}
+hr {
+  margin-top: 30px;
+  background-image: linear-gradient(45deg, goldenrod, white, goldenrod);
+  height: 3px;
+  border-radius: 50%;
+}
+.ribbonTop {
+  background-image: url("../../assets/images/ribbonTop.png");
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-top: 2px;
+  width: 100%;
+}
+.ribbonBot {
+  background-image: url("../../assets/images/ribbonBot.png");
+  height: 32px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
 }
 .food_card:hover {
   transform: scale(1.05);
   box-shadow: 2px 2px 10px #ccc;
 }
 .food_img {
-  width: 40%;
+  width: 30%;
   height: 100%;
 }
 .food_card img {
@@ -31,27 +57,54 @@
   border-bottom-left-radius: 10px;
 }
 .food_info {
-  width: 60%;
+  width: 70%;
   height: 100%;
   padding: 5px;
+  backdrop-filter: blur(6px);
+  position: relative;
 }
 .food_info_name {
   height: 20%;
-}
-.food_diets {
-  height: 80%;
+  display: inline-block;
 }
 .food_diets span {
   display: inline;
 }
-.food_card h3 {
-  margin-top: 10px;
-  font-size: 16px;
+.typeDiets {
+  /* font-size: 16px; */
   text-align: center;
+}
+.food_diets {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+
+  margin-top: -5px;
+
+  /* color: -webktit-linear-gradient(
+    45deg,
+    rgba(218, 165, 32, 1) 11%,
+    rgba(255, 255, 255, 1) 49%,
+    rgba(218, 165, 32, 1) 86%
+    
+  ); */
+}
+.name {
+  font-size: 27px;
+  letter-spacing: -1px;
+  margin-top: 18px;
+}
+.name_diets {
+  background-image: linear-gradient(
+    45deg,
+    rgba(218, 165, 32, 1) 11%,
+    rgba(255, 255, 255, 1) 49%,
+    rgba(218, 165, 32, 1) 86%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .food_card p {
-  margin-top: 10px;
   text-align: center;
   font-size: 16px;
   line-height: 1.5;

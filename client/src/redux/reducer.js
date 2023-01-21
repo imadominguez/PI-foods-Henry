@@ -4,6 +4,7 @@ import {
   ORDER_RECIPES,
   ORDER_HEALSCORE,
   GET_DIETS,
+  RESET_FILTER,
 } from "./actions";
 
 const initialState = {
@@ -76,11 +77,16 @@ const reducer = (state = initialState, action) => {
             : b.healthScore - a.healthScore;
         }),
       };
+    case RESET_FILTER:
+      return {
+        ...state,
+        filterRecipes: [...state.recipes],
+      };
     default:
       return { ...state };
   }
 };
-console.log(initialState.filterRecipes);
+
 export default reducer;
 
 /* 

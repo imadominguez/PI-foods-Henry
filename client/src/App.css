@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "board";
+  src: url("./assets/fonts/Monster\ Unleashed.ttf");
+}
+
 .App {
   text-align: center;
 }

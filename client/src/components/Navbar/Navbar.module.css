@@ -1,0 +1,8 @@
+.nav_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(148, 148, 148, 0.116);
+  color: black;
+  height: 4rem;
+}

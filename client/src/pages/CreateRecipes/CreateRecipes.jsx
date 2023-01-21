@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import * as action from "../../redux/actions";
 import s from "./CreateRecipes.module.css";
 import Validation from "./Validation";
 const { default: axios } = require("axios");
@@ -18,8 +20,8 @@ const CreateRecipes = (props) => {
     healthScore: 0,
     stepByStep: "",
   });
-
-  const [diets, seDiets] = useState([]);
+  const dispatch = useDispatch();
+  const diets = useSelector((state) => state.diets);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -79,12 +81,9 @@ const CreateRecipes = (props) => {
         : userData.dietsTypes.filter((ele) => ele !== e.target.name),
     });
   };
+
   useEffect(() => {
-    async function diets() {
-      const diets = await axios.get("http://localhost:3001/diets");
-      seDiets(diets.data);
-    }
-    diets();
+    dispatch(action.addDiets());
   }, []);
   return (
     <div className={s.container}>
@@ -127,12 +126,12 @@ const CreateRecipes = (props) => {
           {errors.stepByStep && <span>{errors.stepByStep}</span>}
         </div>
         <div>
-          {diets?.map((diet) => {
+          {diets?.map((diet, index) => {
             return (
               <>
-                <label key={diet.name}>{diet.name}</label>
+                <label key={index}>{diet.name}</label>
                 <input
-                  key={diet.id}
+                  key={diet.name}
                   type="checkbox"
                   name={diet.id}
                   onChange={handleCheckbox}

@@ -4,29 +4,46 @@ const { default: axios } = require("axios");
 const API_KEY = "9d879e216f014d05882e91263780e4fd";
 
 const getListByQuery = async (title) => {
-  const getList = await Recipe.findAll({
-    where: { title: { [Op.iLike]: `%${title}%` } },
-    include: [
-      {
-        model: Typediet,
-        through: { attributes: [] },
-      },
-    ],
-  });
-  const getListApi = axios.get(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=10&addRecipeInformation=true`
-  );
-  let listApi = (await getListApi).data.results;
-  if (listApi.length !== 0) {
-    listApi = listApi.filter((food) => {
-      return food.title.toLowerCase().includes(title);
+  if (title) {
+    const getList = await Recipe.findAll({
+      where: { title: { [Op.iLike]: `%${title}%` } },
+      include: [
+        {
+          model: Typediet,
+          through: { attributes: [] },
+        },
+      ],
     });
+    const getListApi = axios.get(
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=10&addRecipeInformation=true`
+    );
+    let listApi = (await getListApi).data.results;
+    if (listApi.length !== 0) {
+      listApi = listApi.filter((food) => {
+        return food.title.toLowerCase().includes(title);
+      });
+    }
+    const allResults = [...getList, ...listApi];
+    console.log(allResults);
+    if (allResults.length !== 0) return allResults;
+    else throw Error(`No se encontro ninguna receta con el nombre de ${title}`);
+  } else {
+    const getListDb = await Recipe.findAll({
+      include: [
+        {
+          model: Typediet,
+          through: { attributes: [] },
+        },
+      ],
+    });
+    const getListApi = await axios.get(
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=10&addRecipeInformation=true`
+    );
+    let listRecipesApi = getListApi.data.results;
+    const allResults = [...getListDb, ...listRecipesApi];
+    if (allResults.length === 0) throw Error("No se encontraron resultados");
+    else return allResults;
   }
-
-  const allResults = [...getList, ...listApi];
-  console.log(allResults);
-  if (allResults.length !== 0) return allResults;
-  else throw Error(`No se encontro ninguna receta con el nombre de ${name}`);
 };
 
 const getDetailRecipe = async (id) => {

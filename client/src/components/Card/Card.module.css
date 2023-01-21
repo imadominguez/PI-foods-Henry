@@ -9,6 +9,11 @@
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
   margin: 10px 0;
+  font-family: "board";
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  text-transform: uppercase;
 }
 .food_card:hover {
   transform: scale(1.05);

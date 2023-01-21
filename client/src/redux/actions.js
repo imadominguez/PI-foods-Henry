@@ -5,17 +5,22 @@ export const ADD_RECIPES = "ADD_RECIPES";
 export const ORDER_RECIPES = "ORDER_RECIPES";
 export const ORDER_HEALSCORE = "ORDER_HEALSCORE";
 export const GET_DIETS = "GET_DIETS";
-
+export const RESET_FILTER = "RESET_FILTER";
 // -------- Agregar recetas -----------//
-export const addRecipes = (recipes) => {
-  return {
-    type: ADD_RECIPES,
-    payload: recipes,
+export const addRecipes = (title) => {
+  return async function (dispatch) {
+    const response = await axios.get(
+      `http://localhost:3001/recipes?title=${title}`
+    );
+    dispatch({ type: ADD_RECIPES, payload: response.data });
   };
+  // return {
+  //   type: ADD_RECIPES,
+  //   payload: recipes,
+  // };
 };
 
 // -------- Agregar dietas -----------//
-
 export const addDiets = () => {
   return async function (dispatch) {
     const response = await axios.get("http://localhost:3001/diets");
@@ -45,5 +50,12 @@ export const orderHealScore = (value) => {
   return {
     type: ORDER_HEALSCORE,
     payload: value,
+  };
+};
+
+// ----------- Reset ---------------- //
+export const resetFilter = () => {
+  return {
+    type: RESET_FILTER,
   };
 };

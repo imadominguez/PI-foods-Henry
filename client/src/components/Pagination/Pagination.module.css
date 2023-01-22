@@ -1,3 +1,4 @@
 .cards_container {
-  width: 50%;
+  max-width: 90%;
+  min-width: 375px;
 }

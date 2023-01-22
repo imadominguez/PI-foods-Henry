@@ -1,12 +1,10 @@
 .reset__link {
   padding: 15px 40px;
   text-decoration: none;
-  background-color: rgba(255, 0, 0, 0.274);
-  color: black;
   cursor: pointer;
   text-transform: uppercase;
   font-weight: 900;
-
+  -webkit-text-stroke: 1px black;
   letter-spacing: 3px;
   border: 1px solid #ccc;
   border-radius: 10px;

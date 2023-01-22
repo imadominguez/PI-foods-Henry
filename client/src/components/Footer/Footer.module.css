@@ -1,0 +1,23 @@
+.footer_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: antiquewhite;
+  height: 5rem;
+  align-items: center;
+}
+
+.footer_container_ul {
+  width: 60%;
+}
+
+.footer_ul {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+.footer_img {
+  width: 50px;
+  height: 50px;
+}

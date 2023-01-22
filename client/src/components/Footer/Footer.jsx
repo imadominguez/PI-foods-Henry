@@ -1,6 +1,6 @@
 import s from "./Footer.module.css";
-import linkedin from "../../assets/icons/linkedin.png";
-import github from "../../assets/icons/github.png";
+import linkedin from "../../assets/icons/linkedin.svg";
+import github from "../../assets/icons/githubg.svg";
 const Footer = () => {
   return (
     <footer className={s.footer_container}>
@@ -9,6 +9,7 @@ const Footer = () => {
           <li className={s.ul_li}>
             <img src={github} alt="github" className={s.footer_img} />
           </li>
+          <li>© Imanol Dominguez Sanchez 2023</li>
           <li className={s.ul_li}>
             <img src={linkedin} alt="linkedin" className={s.footer_img} />
           </li>

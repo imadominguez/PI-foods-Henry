@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import * as action from "../../../redux/actions";
+import s from "./FilterDiets.module.css";
 
 const FilterDiets = () => {
   const dispatch = useDispatch();
@@ -11,8 +12,7 @@ const FilterDiets = () => {
   const diets = useSelector((state) => state.diets);
   return (
     <div>
-      <label htmlFor="">Filtrado: </label>
-      <select onChange={handlerFilter}>
+      <select className={s.select} onChange={handlerFilter}>
         <option hidden>Filter</option>
         <option value="Show All">Show All</option>
         {/* Mapeado de las dietas */}

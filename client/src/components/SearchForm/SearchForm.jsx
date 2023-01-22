@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as action from "../../redux/actions";
+import s from "./SearchForm.module.css";
 
 const SearchForm = () => {
   // Estado local del nombre de la receta del buscador
@@ -18,8 +19,17 @@ const SearchForm = () => {
   };
   return (
     <form onSubmit={onSearch} action="">
-      <input type="text" onChange={handleChange} name={recipes} id="" />
-      <button type="submit">Buscar</button>
+      <input
+        placeholder="Busca una receta"
+        className={s.input}
+        type="text"
+        onChange={handleChange}
+        name={recipes}
+        id=""
+      />
+      <button className={s.button} type="submit">
+        Buscar
+      </button>
     </form>
   );
 };

@@ -5,6 +5,7 @@ import CreateRecipes from "./pages/CreateRecipes/CreateRecipes";
 import Detail from "./pages/Detail/Detail";
 import Home from "./pages/Home/Home";
 import Landing from "./pages/Landing/Landing.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 function App() {
   const { pathname } = useLocation();
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/createrecipes" component={CreateRecipes} />
         <Route exact path="/recipes/:id" component={Detail} />
       </Switch>
+      <Footer />
     </div>
   );
 }

@@ -2,3 +2,20 @@
   max-width: 90%;
   min-width: 375px;
 }
+.button_container {
+  display: flex;
+  gap: 10px;
+}
+.button {
+  cursor: pointer;
+  color: aliceblue;
+  width: 35px;
+  height: 35px;
+  background: none;
+  border: 2px solid #ccc;
+  border-color: #daa520;
+  border-radius: 50%;
+}
+.button:active {
+  transform: scale(0.9);
+}

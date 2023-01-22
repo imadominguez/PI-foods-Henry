@@ -23,9 +23,9 @@ const Pagination = () => {
 
   return (
     <>
-      <div>
+      <div className={s.button_container}>
         {indexButton.map((element) => (
-          <button onClick={handlePage} value={element}>
+          <button className={s.button} onClick={handlePage} value={element}>
             {element}
           </button>
         ))}

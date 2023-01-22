@@ -16,12 +16,12 @@ const Card = (props) => {
         </div>
         <div className={s.food_diets}>
           <h3 className={s.name_diets}>Tipos de dietas:</h3>
-          <div>
-            {Array.isArray(diets) ? (
-              diets.map((e, i) => <span key={e}>{e} </span>)
-            ) : (
-              <h3>No se encontro nada rey</h3>
-            )}
+          <div className={s.diets_container}>
+            {diets.map((e, i) => (
+              <span className={s.name__diets} key={e}>
+                {e}
+              </span>
+            ))}
           </div>
         </div>
         <div className={s.ribbonBot}></div>

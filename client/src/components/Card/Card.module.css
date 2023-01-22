@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Atma:wght@400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 
+/*------------- contenedor cards -------------*/
 .food_card {
   display: flex;
   align-items: center;
-  height: 250px;
+  height: 310px;
+  width: 1000px;
   border: 1px solid #ccc;
   border-radius: 10px;
   border-color: #daa520;
@@ -12,16 +14,22 @@
   margin: 50px 0;
   font-family: "Atma", cursive;
   overflow: hidden;
-
   font-weight: 400;
   letter-spacing: 5px;
 }
+.food_card:hover {
+  transform: scale(1.05);
+  box-shadow: 2px 2px 10px #ccc;
+}
+/*------------- hr -------------*/
 hr {
   margin-top: 30px;
   background-image: linear-gradient(45deg, goldenrod, white, goldenrod);
   height: 3px;
   border-radius: 50%;
 }
+
+/*------------- Ribbons -------------*/
 .ribbonTop {
   background-image: url("../../assets/images/ribbonTop.png");
   height: 40px;
@@ -41,14 +49,13 @@ hr {
   width: 100%;
   bottom: 10px;
 }
-.food_card:hover {
-  transform: scale(1.05);
-  box-shadow: 2px 2px 10px #ccc;
-}
+
+/*------------- contenedor de img  -------------*/
 .food_img {
-  width: 30%;
   height: 100%;
+  width: 400px;
 }
+/*------------- img card -------------*/
 .food_card img {
   width: 100%;
   height: 100%;
@@ -56,34 +63,45 @@ hr {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
+/*------------- contenedor info de card -------------*/
 .food_info {
-  width: 70%;
   height: 100%;
+  width: 100%;
   padding: 5px;
   backdrop-filter: blur(6px);
   position: relative;
 }
+/*------------- contenedor de nombre -------------*/
 .food_info_name {
-  height: 20%;
+  /* height: 20%; */
   display: inline-block;
 }
-.food_diets span {
-  display: inline;
-}
-.typeDiets {
-  /* font-size: 16px; */
-  text-align: center;
-}
-.food_diets {
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-
-  margin-top: -5px;
-}
+/*------------- nombre de la dieta -------------*/
 .name {
   font-size: 27px;
   letter-spacing: -1px;
-  margin-top: 18px;
+  /* margin-top: 18px; */
+}
+/*------------- contenedor de tipos de dietas -------------*/
+.food_diets {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  /* margin-top: -5px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.diets_container {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  font-family: "Atma", cursive;
+  font-weight: 500;
 }
 .name_diets {
   background-image: linear-gradient(
@@ -94,10 +112,15 @@ hr {
   );
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: 500;
+}
+/*------------- span de diets -------------*/
+.name__diets {
+  font-size: 18px;
 }
 
-.food_card p {
+/* .food_card p {
   text-align: center;
   font-size: 16px;
   line-height: 1.5;
-}
+} */

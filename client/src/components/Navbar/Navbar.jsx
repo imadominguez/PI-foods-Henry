@@ -6,13 +6,17 @@ const Navbar = () => {
   return (
     <nav className={s.nav_container}>
       <div>
-        <Link to="/">INICIO</Link>
+        <Link className={s.link} to="/">
+          INICIO
+        </Link>
       </div>
       <div>
         <SearchForm />
       </div>
       <div>
-        <Link to="/createrecipes">CREA TU RECETA</Link>
+        <Link className={s.link} to="/createrecipes">
+          CREA TU RECETA
+        </Link>
       </div>
     </nav>
   );

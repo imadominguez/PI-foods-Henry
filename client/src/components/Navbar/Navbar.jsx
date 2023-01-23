@@ -6,9 +6,12 @@ import SearchForm from "../SearchForm/SearchForm";
 const Navbar = () => {
   return (
     <nav className={s.nav_container}>
-      <div>
+      <div className={s.nav_links}>
         <Link className={s.link} to="/">
           INICIO
+        </Link>
+        <Link to="/home" className={s.link}>
+          HOME
         </Link>
       </div>
       <div>

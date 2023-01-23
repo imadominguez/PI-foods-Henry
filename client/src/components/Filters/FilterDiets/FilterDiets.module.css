@@ -24,3 +24,16 @@
   cursor: pointer;
   box-shadow: 2px 2px 10px #ccc;
 }
+
+.option {
+  font-size: 14px;
+  padding: 10px 0;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 20px;
+}
+
+.option:hover {
+  background-color: red;
+  color: red;
+}

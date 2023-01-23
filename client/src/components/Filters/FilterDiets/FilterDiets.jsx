@@ -17,7 +17,7 @@ const FilterDiets = () => {
         <option value="Show All">Show All</option>
         {/* Mapeado de las dietas */}
         {diets.map((e, i) => (
-          <option key={i} value={e.name}>
+          <option key={i} value={e.name} className={s.option}>
             {e.name}
           </option>
         ))}

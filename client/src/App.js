@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/createrecipes" component={CreateRecipes} />
         <Route exact path="/recipes/:id" component={Detail} />
       </Switch>
-      <Footer />
+      {pathname === "/" ? null : <Footer />}
     </div>
   );
 }

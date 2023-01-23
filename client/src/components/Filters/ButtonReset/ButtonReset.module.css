@@ -19,9 +19,11 @@
   );
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .reset__link:hover {
-  transform: scale(1.05);
   box-shadow: 2px 2px 10px #ccc;
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import Card from "../Card/Card";
 
 import s from "./Pagination.module.css";
@@ -21,13 +22,12 @@ const Pagination = () => {
   for (let i = 1; i <= totalPages; i++) {
     indexButton.push(i);
   }
-
+  console.log(paginated);
   return (
     <>
       <div className={s.button_container}>
         {indexButton.map((element, index) => (
           <>
-            {console.log(index)}
             <button className={s.button} onClick={handlePage} value={element}>
               {element}
             </button>
@@ -38,13 +38,22 @@ const Pagination = () => {
         {paginated?.map((e) =>
           e.dataBase ? (
             <Card
+              dataBase={e.dataBase}
               key={`db  ${e.id}`}
+              id={e.id}
               name={e.title}
               image="https://via.placeholder.com/150"
               diets={e.typediets.map((diet) => diet.name)}
             />
           ) : (
-            <Card key={e.id} name={e.title} diets={e.diets} image={e.image} />
+            <Card
+              dataBase={false}
+              key={e.id}
+              name={e.title}
+              diets={e.diets}
+              image={e.image}
+              id={e.id}
+            />
           )
         )}
       </div>

@@ -1,7 +1,7 @@
 const { Recipe, Typediet } = require("../db");
 const { Op } = require("sequelize");
 const { default: axios } = require("axios");
-const API_KEY = "5ebe6f81a18e4c41a5ad73dc4f76a524";
+const API_KEY = "9d879e216f014d05882e91263780e4fd";
 
 const getListByQuery = async (title) => {
   if (title) {
@@ -46,12 +46,28 @@ const getListByQuery = async (title) => {
   }
 };
 
-const getDetailRecipe = async (id) => {
+const getDetailRecipe = async (id, database) => {
   // si existe database findByPk
-  // sino peticion a la Api con ese id
-  const getDetail = await Recipe.findByPk(id);
-  if (getDetail) return getDetail;
-  else throw Error(`No se encontro ninguna receta con ese id ${id}`);
+  if (database == "true") {
+    let detailRecipe = Recipe.findByPk(id, {
+      include: [
+        {
+          model: Typediet,
+          through: { attributes: [] },
+        },
+      ],
+    });
+    if (!detailRecipe || detailRecipe == null)
+      throw Error(`No se encontro una receta con ese id ${id}`);
+    return detailRecipe;
+  } else {
+    let detailRecipe = await axios.get(
+      `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
+    );
+    if (!detailRecipe)
+      throw Error(`No se encontro una receta con ese id ${id}`);
+    return detailRecipe.data;
+  }
 };
 
 const createRecipe = async (

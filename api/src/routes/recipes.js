@@ -16,10 +16,11 @@ recipesRouter.get("/", async (req, res) => {
   }
 });
 
-recipesRouter.get("/:id", async (req, res) => {
-  const { id } = req.params;
+recipesRouter.get("/:id/:dataBase", async (req, res) => {
+  const { id, dataBase } = req.params;
+
   try {
-    const detailRecipe = await getDetailRecipe(id);
+    const detailRecipe = await getDetailRecipe(id, dataBase);
     res.status(200).json(detailRecipe);
   } catch (error) {
     res.status(404).json({ error: error.message });

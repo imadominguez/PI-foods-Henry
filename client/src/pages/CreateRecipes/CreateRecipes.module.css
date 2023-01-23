@@ -1,5 +1,108 @@
 .container {
-  height: 100%;
-  width: 100vw;
+  /* width: 100vw; */
   color: aliceblue;
+  min-height: 81vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../assets/images/fondo_createrecipes.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.form_container {
+  width: 880px;
+  height: 560px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.form_title {
+  height: 10%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.input_title {
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+.form_summary {
+  height: 30%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_healthscore {
+  display: flex;
+  flex-direction: column;
+  height: 10%;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_healthscore input {
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.form_stepbystep {
+  width: 50%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.form_stepbystep textarea {
+  width: 100%;
+}
+
+.form_diets {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_submit {
+  height: 10%;
+  display: flex;
+  align-items: center;
+}
+
+.form_submit button {
+  padding: 5px 15px;
+  background: none;
+  border: 1px solid #daa520;
+  border-radius: 10px;
+  color: whitesmoke;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form_submit button:hover {
+  box-shadow: 0px 0px 10px rgb(255, 255, 255);
+}
+input::placeholder {
+  text-align: center;
+}
+textarea::placeholder {
+  text-align: center;
+}
+textarea {
+  resize: none;
+  width: 100%;
+  padding: 10px 5px;
+  border-radius: 10px;
 }

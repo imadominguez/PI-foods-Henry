@@ -87,45 +87,60 @@ const CreateRecipes = (props) => {
   }, []);
   return (
     <div className={s.container}>
-      <form action="" method="post" className={s.form} onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="">Title:</label>
-          <input type="text" name="title" id="" onChange={handleInputChange} />
+      <form
+        className={s.form_container}
+        action=""
+        method="post"
+        onSubmit={handleSubmit}
+      >
+        <div className={s.form_title}>
+          {/* <label htmlFor="">Title:</label> */}
+          <input
+            type="text"
+            name="title"
+            id=""
+            className={s.input_title}
+            onChange={handleInputChange}
+            placeholder="Ingresa el titulo de la receta"
+            required
+          />
           {errors.title ? <span>{errors.title}</span> : ""}
         </div>
-        <div>
-          <label htmlFor="">Summary:</label>
+        <div className={s.form_summary}>
           <textarea
             name="summary"
             id=""
             cols="30"
             rows="10"
             onChange={handleInputChange}
+            placeholder="Ingresa un resumen"
+            autoCapitalize="sentences"
           ></textarea>
           {errors.summary ? <span>{errors.summary}</span> : ""}
         </div>
-        <div>
-          <label htmlFor="">HealthScore:</label>
+        <div className={s.form_healthscore}>
           <input
             type="number"
             name="healthScore"
             id=""
             onChange={handleInputChange}
+            required
+            placeholder="Ingresa el puntaje de salud 0 - 100"
           />
           {errors.healthScore !== 0 && <span>{errors.healthScore}</span>}
         </div>
-        <div>
-          <label htmlFor="">Steps of steps:</label>
+        <div className={s.form_stepbystep}>
           <textarea
             name="stepByStep"
             id=""
             cols="30"
             rows="10"
             onChange={handleInputChange}
+            placeholder="Ingresa el paso a paso"
           ></textarea>
           {errors.stepByStep && <span>{errors.stepByStep}</span>}
         </div>
-        <div>
+        <div className={s.form_diets}>
           {diets?.map((diet, index) => {
             return (
               <>
@@ -141,7 +156,7 @@ const CreateRecipes = (props) => {
             );
           })}
         </div>
-        <div>
+        <div className={s.form_submit}>
           <button type="submit">Submit</button>
         </div>
       </form>

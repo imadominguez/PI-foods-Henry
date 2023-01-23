@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import s from "./Navbar.module.css";
+import chef from "../../assets/icons/cheff.svg";
 
 import SearchForm from "../SearchForm/SearchForm";
 const Navbar = () => {
@@ -15,7 +16,7 @@ const Navbar = () => {
       </div>
       <div>
         <Link className={s.link} to="/createrecipes">
-          CREA TU RECETA
+          <span>CREA TU RECETA</span> <img src={chef} alt="" />
         </Link>
       </div>
     </nav>

@@ -6,6 +6,7 @@ export const ORDER_RECIPES = "ORDER_RECIPES";
 export const ORDER_HEALSCORE = "ORDER_HEALSCORE";
 export const GET_DIETS = "GET_DIETS";
 export const RESET_FILTER = "RESET_FILTER";
+export const GET_DETAILRECIPE = "GET_DETAILRECIPE";
 // -------- Agregar recetas -----------//
 export const addRecipes = (title) => {
   return async function (dispatch) {

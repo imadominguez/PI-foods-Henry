@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as action from "../../redux/actions";
 import s from "./SearchForm.module.css";
+import search from "../../assets/icons/search.svg";
 
 const SearchForm = () => {
   // Estado local del nombre de la receta del buscador
@@ -28,7 +29,8 @@ const SearchForm = () => {
         id=""
       />
       <button className={s.button} type="submit">
-        Buscar
+        <span>Buscar</span>
+        <img src={search} alt="" className={s.img} />
       </button>
     </form>
   );

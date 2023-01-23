@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
+
 import s from "./Pagination.module.css";
 
 const Pagination = () => {
@@ -24,10 +25,13 @@ const Pagination = () => {
   return (
     <>
       <div className={s.button_container}>
-        {indexButton.map((element) => (
-          <button className={s.button} onClick={handlePage} value={element}>
-            {element}
-          </button>
+        {indexButton.map((element, index) => (
+          <>
+            {console.log(index)}
+            <button className={s.button} onClick={handlePage} value={element}>
+              {element}
+            </button>
+          </>
         ))}
       </div>
       <div className={s.cards_container}>

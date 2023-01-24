@@ -150,6 +150,7 @@ const CreateRecipes = (props) => {
                   type="checkbox"
                   name={diet.id}
                   onChange={handleCheckbox}
+                  className={s.checkbox}
                 />
                 {/* e.target.name = name || e.target.checked = true|false ||  */}
               </>

@@ -1,7 +1,7 @@
 .container {
   /* width: 100vw; */
   color: aliceblue;
-  min-height: 81vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,15 +94,32 @@
 .form_submit button:hover {
   box-shadow: 0px 0px 10px rgb(255, 255, 255);
 }
+
+.checkbox:checked {
+  background-color: #daa520;
+}
 input::placeholder {
   text-align: center;
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
 }
 textarea::placeholder {
   text-align: center;
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
 }
 textarea {
   resize: none;
   width: 100%;
   padding: 10px 5px;
   border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.46);
+  font-size: 14px;
+}
+
+input {
+  background-color: rgba(255, 255, 255, 0.473);
+  font-size: 14px;
 }

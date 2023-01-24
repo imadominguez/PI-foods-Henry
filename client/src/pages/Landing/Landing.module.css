@@ -3,10 +3,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 97vh;
+  min-height: 100vh;
   color: whitesmoke;
   gap: 150px;
   background-image: url("../../assets/images/fondo_landing.jpg");
+  /* position: absolute;
+  width: 100vw; */
 }
 
 .home__link {

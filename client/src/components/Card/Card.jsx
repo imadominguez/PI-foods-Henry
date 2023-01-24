@@ -5,7 +5,7 @@ const Card = (props) => {
   const { diets, dataBase, id } = props;
 
   return (
-    <Link to={`/detail/${id}/${dataBase}`}>
+    <Link className={s.link} to={`/detail/${id}/${dataBase}`}>
       <article className={s.food_card}>
         <div className={s.food_img}>
           <img src={props.image} alt={props.name} />

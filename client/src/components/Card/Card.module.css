@@ -118,7 +118,10 @@ hr {
 .name__diets {
   font-size: 18px;
 }
-
+.link {
+  color: white;
+  text-decoration: none;
+}
 /* .food_card p {
   text-align: center;
   font-size: 16px;

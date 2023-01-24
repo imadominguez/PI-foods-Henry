@@ -106,7 +106,6 @@ const createRecipe = async (
     summary,
     healthScore,
     stepByStep,
-    dietsTypes,
   });
 
   if (dietsTypes.length === 0) throw Error("Faltan tipos de dieta");

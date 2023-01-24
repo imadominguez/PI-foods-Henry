@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import s from "./Detail.module.css";
 const { default: axios } = require("axios");
 
 const Detail = () => {
@@ -26,10 +27,23 @@ const Detail = () => {
     getRecipe();
   }, []);
   return (
-    <div style={{ color: "white" }}>
-      <h2>{detailrecipe.title}</h2>
-      <h1>{detailrecipe.id}</h1>
-      <p>{parseoHtml(detailrecipe?.summary)}</p>
+    <div class={s.container_detail}>
+      <div class={s.container}>
+        <div class={s.image}>
+          <div className={s.image_container}>
+            <img src={detailrecipe.image} className={s.img} alt="" />
+          </div>
+        </div>
+        <div class={s.title}>
+          <h1>{detailrecipe.title}</h1>
+        </div>
+        <div class={s.summary}>
+          <p>{parseoHtml(detailrecipe?.summary)}</p>
+        </div>
+        <div class={s.helathscore}>healthscoreeeee</div>
+        <div class={s.instructions}>instructionnssssss</div>
+        <div class={s.diets}>dieeeeets</div>
+      </div>
     </div>
   );
 };

@@ -46,10 +46,10 @@ const getListByQuery = async (title) => {
   }
 };
 
-const getDetailRecipe = async (id, database) => {
+const getDetailRecipe = async (idFront, database) => {
   // si existe database findByPk
   if (database == "true") {
-    let detailRecipe = Recipe.findByPk(id, {
+    let detailRecipe = Recipe.findByPk(idFront, {
       include: [
         {
           model: Typediet,
@@ -58,15 +58,37 @@ const getDetailRecipe = async (id, database) => {
       ],
     });
     if (!detailRecipe || detailRecipe == null)
-      throw Error(`No se encontro una receta con ese id ${id}`);
+      throw Error(`No se encontro una receta con ese id ${idFront}`);
     return detailRecipe;
   } else {
     let detailRecipe = await axios.get(
-      `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
+      `https://api.spoonacular.com/recipes/${idFront}/information?apiKey=${API_KEY}`
     );
     if (!detailRecipe)
       throw Error(`No se encontro una receta con ese id ${id}`);
-    return detailRecipe.data;
+    const {
+      id,
+      title,
+      image,
+      summary,
+      healthScore,
+      instructions,
+      dishTypes,
+      diets,
+    } = detailRecipe.data;
+
+    let recipe = {
+      id,
+      title,
+      image,
+      summary,
+      healthScore,
+      instructions,
+      dishTypes,
+      diets,
+    };
+    // aca desmenuzo el resultado de la api con lo que me piden en detail
+    return recipe;
   }
 };
 

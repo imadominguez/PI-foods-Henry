@@ -22,7 +22,6 @@ const Pagination = () => {
   for (let i = 1; i <= totalPages; i++) {
     indexButton.push(i);
   }
-  console.log(paginated);
   return (
     <>
       <div className={s.button_container}>

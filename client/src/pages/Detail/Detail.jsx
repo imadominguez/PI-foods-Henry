@@ -7,7 +7,7 @@ const { default: axios } = require("axios");
 const Detail = () => {
   const { id, dataBase } = useParams();
   const [detailrecipe, setdetailrecipe] = useState({});
-
+  console.log(detailrecipe);
   const getDetail = async (id, dataBase) => {
     const response = await axios.get(
       `http://localhost:3001/recipes/${id}/${dataBase}`
@@ -27,22 +27,39 @@ const Detail = () => {
     getRecipe();
   }, []);
   return (
-    <div class={s.container_detail}>
-      <div class={s.container}>
-        <div class={s.image}>
+    <div className={s.container_detail}>
+      <div className={s.container}>
+        <div className={s.image}>
           <div className={s.image_container}>
-            <img src={detailrecipe.image} className={s.img} alt="" />
+            <img
+              src={detailrecipe.image}
+              className={s.img}
+              alt={detailrecipe.title}
+            />
           </div>
         </div>
-        <div class={s.title}>
+        <div className={s.title}>
           <h1>{detailrecipe.title}</h1>
         </div>
-        <div class={s.summary}>
+        <div className={s.summary}>
           <p>{parseoHtml(detailrecipe?.summary)}</p>
         </div>
-        <div class={s.helathscore}>healthscoreeeee</div>
-        <div class={s.instructions}>instructionnssssss</div>
-        <div class={s.diets}>dieeeeets</div>
+        <div className={s.helathscore}>
+          <div>{detailrecipe?.healthScore}</div>
+          <div>
+            {detailrecipe.dishTypes?.map((e) => (
+              <span key={e}>{e}</span>
+            ))}
+          </div>
+        </div>
+        <div className={s.diets}>
+          {detailrecipe.diets?.map((e) => (
+            <span key={e}>{e}</span>
+          ))}
+        </div>
+        <div className={s.instructions}>
+          <p>{detailrecipe?.instructions}</p>
+        </div>
       </div>
     </div>
   );

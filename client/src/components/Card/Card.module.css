@@ -68,7 +68,8 @@ hr {
   height: 100%;
   width: 100%;
   padding: 5px;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.5);
   position: relative;
 }
 /*------------- contenedor de nombre -------------*/

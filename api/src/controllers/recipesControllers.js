@@ -1,7 +1,7 @@
 const { Recipe, Typediet } = require("../db");
 const { Op } = require("sequelize");
 const { default: axios } = require("axios");
-const API_KEY = "5ebe6f81a18e4c41a5ad73dc4f76a524";
+const API_KEY = "9d879e216f014d05882e91263780e4fd";
 
 const getListByQuery = async (title) => {
   if (title) {

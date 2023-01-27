@@ -26,4 +26,10 @@
 }
 .button:focus {
   background-color: #daa520;
+  color: black;
+}
+
+.active {
+  background-color: #daa520;
+  color: black;
 }

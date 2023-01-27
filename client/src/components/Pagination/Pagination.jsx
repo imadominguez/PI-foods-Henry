@@ -9,7 +9,7 @@ const Pagination = () => {
   const [page, setPage] = useState(1);
 
   const recipes = useSelector((state) => state.filterRecipes);
-  const amount = 3;
+  const amount = 9;
   const totalPages = Math.ceil(recipes.length / amount);
 
   const paginated = recipes.slice((page - 1) * amount, page * amount);
@@ -26,11 +26,13 @@ const Pagination = () => {
     <>
       <div className={s.button_container}>
         {indexButton.map((element, index) => (
-          <>
-            <button className={s.button} onClick={handlePage} value={element}>
-              {element}
-            </button>
-          </>
+          <button
+            className={`${s.button} ${page === element && `${s.active}`}`}
+            onClick={handlePage}
+            value={element}
+          >
+            {element}
+          </button>
         ))}
       </div>
       <div className={s.cards_container}>

@@ -3,6 +3,8 @@ const {
   getListByQuery,
   getDetailRecipe,
   createRecipe,
+  deleteRecipe,
+  updateRecipe,
 } = require("../controllers/recipesControllers");
 const recipesRouter = Router();
 
@@ -38,6 +40,27 @@ recipesRouter.post("/", async (req, res) => {
       dietsTypes
     );
     res.status(200).json(newRecipe);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+recipesRouter.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await deleteRecipe(id);
+    res.status(200).send(`Receta con id ${id} eliminada correctamente`);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+recipesRouter.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const recipe = req.body;
+  try {
+    await updateRecipe(recipe, id);
+    res.status(200).send(`Receta con id ${id} actualizada correctamente`);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

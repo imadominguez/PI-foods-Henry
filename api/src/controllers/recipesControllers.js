@@ -113,4 +113,22 @@ const createRecipe = async (
   return newRecipe;
 };
 
-module.exports = { getListByQuery, getDetailRecipe, createRecipe };
+const deleteRecipe = async (id) => {
+  Recipe.destroy({ where: { id: id } });
+};
+
+const updateRecipe = async (receta, id) => {
+  console.log(receta.dietsTypes);
+  const actualize = await Recipe.update(receta, { where: { id: id } });
+  const actualizeRecipeDiets = await Recipe.findByPk(id);
+  await actualizeRecipeDiets.setTypediets(receta.dietsTypes);
+  return actualize;
+};
+
+module.exports = {
+  getListByQuery,
+  getDetailRecipe,
+  createRecipe,
+  deleteRecipe,
+  updateRecipe,
+};

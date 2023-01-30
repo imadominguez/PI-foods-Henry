@@ -7,4 +7,36 @@
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 0px 0px 10px 10px;
   backdrop-filter: blur(1px);
+  position: relative;
+}
+
+.filters_ul {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(1px);
+  height: 400px;
+  width: 230px;
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  top: 236px;
+  padding: 15px 20px;
+}
+
+.filters_ul ul {
+  text-transform: uppercase;
+  padding-top: 15px;
+  list-style: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.filters_ul li {
+  background-color: goldenrod;
+  color: black;
+  display: inline-block;
+  padding: 5px 10px;
+  font-weight: 600;
+  border-radius: 5px;
 }

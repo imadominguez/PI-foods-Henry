@@ -5,7 +5,6 @@ import s from "./OrderList.module.css";
 const OrderList = () => {
   const dispatch = useDispatch();
   const filterValue = useSelector((state) => state.filterValue);
-  console.log(filterValue);
   // Funcion para ordenar alfabeticamente
   const handlerOrder = (e) => {
     dispatch(action.orderRecipes(e.target.value));

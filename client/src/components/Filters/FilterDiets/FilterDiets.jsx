@@ -6,7 +6,6 @@ const FilterDiets = () => {
   const dispatch = useDispatch();
   const filterValue = useSelector((state) => state.filterValue);
 
-  console.log(filterValue);
   // Funcion para filtrar por tipos de dietas
   const handlerFilter = (e) => {
     dispatch(action.filterDiets(e.target.value));

@@ -3,14 +3,14 @@ const preDietsList = [
   { name: "gluten free" },
   { name: "ketogenic" },
   { name: "vegetarian" },
-  { name: "lacto-vegetarian" },
-  { name: "ovo-vegetarian" },
+  { name: "dairy free" },
+  { name: "lacto ovo vegetarian" },
   { name: "vegan" },
   { name: "pescetarian" },
-  { name: "paleo" },
+  { name: "paleolithic" },
   { name: "primal" },
   { name: "low fodmap" },
-  { name: "whole30" },
+  { name: "whole 30" },
 ];
 const getDiets = async () => {
   let findDietDb = await Typediet.findAll();

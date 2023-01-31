@@ -6,20 +6,22 @@ import Pagination from "../../components/Pagination/Pagination";
 import Filters from "../../components/Filters/Filters";
 
 function Home() {
-  // Dispatch
   const recipes = useSelector((state) => state.recipes);
+  const recipesFilter = useSelector((state) => state.recipesFilter);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(action.addDiets());
-
     !recipes.length && dispatch(action.addRecipes(""));
   }, []);
   return (
-    <div className={s.container}>
-      <Filters />
-      <section className={s.container_cards}>
-        <Pagination />
-      </section>
+    <div className={s.fondo}>
+      <div className={s.container}>
+        <Filters />
+        <section className={s.container_cards}>
+          <Pagination />
+        </section>
+      </div>
     </div>
   );
 }

@@ -4,7 +4,8 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-image: url("../../assets/images/fondo-home.jpg");
+  background-image: url("../../assets/images/fondo-home-prueba.jpg");
+  background-size: cover;
 }
 
 .container_cards {

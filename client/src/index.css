@@ -14,7 +14,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #111514;
 }
-
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

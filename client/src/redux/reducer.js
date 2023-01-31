@@ -30,14 +30,18 @@ const reducer = (state = initialState, action) => {
         diets: action.payload,
       };
     case FILTER_DIETS:
+      // variable nueva que copia todo lo que tenga selecFilter que por defecto viene vacio
       const newSelectFilter = { ...state.selectFilter };
 
+      // en este obj vacio seteamos la propiedad con la key que viene de payload y la seteamos en true
       newSelectFilter[action.payload] = true;
-
+      // creamos nueva variable que es un array de todas las key del objeto
       const filterToApply = Object.keys(newSelectFilter);
 
+      // variable que guarda todas las recetas para despues filtrar
       let newFilteredRecipes = [...state.recipes];
 
+      // recorremos el array con las key del objeto
       filterToApply.forEach((filter) => {
         newFilteredRecipes = newFilteredRecipes.filter((e) => {
           return e.dataBase
@@ -45,11 +49,7 @@ const reducer = (state = initialState, action) => {
             : e.diets.includes(filter);
         });
       });
-      // let filtered = state.recipes.filter((e) => {
-      //   return e.dataBase
-      //     ? e.typediets.some((e) => e.name.includes(action.payload))
-      //     : e.diets.includes(action.payload);
-      // });
+
       return {
         ...state,
         filterRecipes: newFilteredRecipes,

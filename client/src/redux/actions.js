@@ -16,10 +16,6 @@ export const addRecipes = (title) => {
     );
     dispatch({ type: ADD_RECIPES, payload: response.data });
   };
-  // return {
-  //   type: ADD_RECIPES,
-  //   payload: recipes,
-  // };
 };
 
 // -------- Add diets -----------//
@@ -68,4 +64,25 @@ export const saveValueFilter = (key, value) => {
     type: SAVE_FILTER_VALUE,
     payload: { key, value },
   };
+};
+
+// ----------- Delete recipe ----------- //
+export const deleteRecipe = async (id) => {
+  try {
+    const deleteRecipe = await axios.delete(
+      `http://localhost:3001/recipes/${id}`
+    );
+    if (deleteRecipe) window.confirm("seguro que quieres continuar");
+  } catch (error) {
+    alert(error.message);
+  }
+};
+
+export const updateRecipe = async (recipe, id) => {
+  try {
+    await axios.put(`http://localhost:3001/recipes/${id}`, recipe);
+    alert("Receta actualizada");
+  } catch (error) {
+    alert(error.message);
+  }
 };

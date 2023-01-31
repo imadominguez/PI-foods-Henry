@@ -6,6 +6,7 @@ import Detail from "./pages/Detail/Detail";
 import Home from "./pages/Home/Home";
 import Landing from "./pages/Landing/Landing.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import NotFound from "./pages/Not found/NotFound";
 
 function App() {
   const { pathname } = useLocation();
@@ -17,7 +18,9 @@ function App() {
         <Route exact path="/home" component={Home} />
         <Route exact path="/createrecipes" component={CreateRecipes} />
         <Route exact path="/detail/:id/:dataBase" component={Detail} />
+        <Route exact path="*" component={NotFound} />
       </Switch>
+      {/* * PARA EL 404 NOT FOUND */}
       {pathname === "/" ? null : <Footer />}
     </div>
   );

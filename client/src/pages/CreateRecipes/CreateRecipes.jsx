@@ -10,7 +10,7 @@ const CreateRecipes = (props) => {
   const [userData, setUserData] = useState({
     title: "",
     summary: "",
-    healthScore: 0,
+    healthScore: null,
     stepByStep: "",
     dietsTypes: [],
   });
@@ -33,19 +33,19 @@ const CreateRecipes = (props) => {
     ) {
       axios
         .post("http://localhost:3001/recipes", userData)
-        .then((res) => console.log("receta creada correctamente"))
+        .then((res) => alert("receta creada correctamente"))
         .catch((error) => console.log(error.message));
+      setUserData({
+        title: "",
+        summary: "",
+        healthScore: false,
+        stepByStep: "",
+        dataBase: true,
+        dietsTypes: [],
+      });
     } else {
       console.log("Te faltan datos para enviar");
     }
-    setUserData({
-      title: "",
-      summary: "",
-      healthScore: 0,
-      stepByStep: "",
-      dataBase: true,
-      dietsTypes: [],
-    });
   };
   const handleInputChange = (e) => {
     if (e.target.value) {
@@ -94,17 +94,27 @@ const CreateRecipes = (props) => {
         onSubmit={handleSubmit}
       >
         <div className={s.form_title}>
-          {/* <label htmlFor="">Title:</label> */}
           <input
             type="text"
             name="title"
+            value={userData.title}
             id=""
-            className={s.input_title}
+            className={`${s.input_title} ${
+              errors.title && userData.title
+                ? s.red_input
+                : !errors.title && userData.title
+                ? s.green_input
+                : ""
+            }`}
             onChange={handleInputChange}
             placeholder="Ingresa el titulo de la receta"
             required
           />
-          {errors.title ? <span>{errors.title}</span> : ""}
+          {errors.title ? (
+            <span className={s.red_label}>{errors.title}</span>
+          ) : (
+            ""
+          )}
         </div>
         <div className={s.form_summary}>
           <textarea
@@ -115,6 +125,7 @@ const CreateRecipes = (props) => {
             onChange={handleInputChange}
             placeholder="Ingresa un resumen"
             autoCapitalize="sentences"
+            value={userData.summary}
           ></textarea>
           {errors.summary ? <span>{errors.summary}</span> : ""}
         </div>
@@ -122,10 +133,18 @@ const CreateRecipes = (props) => {
           <input
             type="number"
             name="healthScore"
+            value={userData.healthScore}
             id=""
             onChange={handleInputChange}
             required
             placeholder="Ingresa el puntaje de salud 0 - 100"
+            className={`${s.input_title} ${
+              errors.healthScore && userData.healthScore
+                ? s.red_input
+                : !errors.healthScore && userData.healthScore
+                ? s.green_input
+                : ""
+            }`}
           />
           {errors.healthScore !== 0 && <span>{errors.healthScore}</span>}
         </div>
@@ -135,6 +154,7 @@ const CreateRecipes = (props) => {
             id=""
             cols="30"
             rows="10"
+            value={userData.stepByStep}
             onChange={handleInputChange}
             placeholder="Ingresa el paso a paso"
           ></textarea>
@@ -143,7 +163,7 @@ const CreateRecipes = (props) => {
         <div className={s.form_diets}>
           {diets?.map((diet, index) => {
             return (
-              <>
+              <div>
                 <label key={index}>{diet.name}</label>
                 <input
                   key={diet.name}
@@ -152,8 +172,7 @@ const CreateRecipes = (props) => {
                   onChange={handleCheckbox}
                   className={s.checkbox}
                 />
-                {/* e.target.name = name || e.target.checked = true|false ||  */}
-              </>
+              </div>
             );
           })}
         </div>

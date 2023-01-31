@@ -1,5 +1,5 @@
 export default function Validation(userData) {
-  let regexTitle = /^[a-zA-Z0-9\s]{0,20}$/;
+  let regexTitle = /^[a-zA-Z0-9\s]{5,20}$/;
   let regexHealthScore = /^([1-9][0-9]?|100)$/;
 
   let errores = {};
@@ -7,7 +7,10 @@ export default function Validation(userData) {
   if (userData.title) {
     if (!regexTitle.test(userData.title))
       errores.title =
-        "el title debe ser menor a 20 y no debe contener simbolos";
+        "debe contener de 5-20 caracteres y no debe contener simbolos";
+    else {
+      errores.title = "";
+    }
   }
 
   if (userData.summary) {

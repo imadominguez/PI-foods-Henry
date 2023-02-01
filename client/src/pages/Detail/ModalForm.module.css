@@ -1,0 +1,97 @@
+.form_container {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  height: 750px;
+  border: 1px solid white;
+  margin-left: 150px;
+}
+
+.form_title {
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.form_title input {
+  height: 50%;
+  width: 50%;
+  padding: 5px 10px;
+}
+
+.form_summary {
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.form_summary textarea {
+  width: 50%;
+}
+
+.form_healthscore {
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.form_healthscore input {
+  height: 50%;
+  width: 50%;
+  padding: 5px 10px;
+}
+
+.form_stepbystep {
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.form_stepbystep textarea {
+  width: 50%;
+}
+
+.form_diets {
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.form_diets div {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.form_submit {
+  height: 10%;
+}
+
+.form_submit button {
+  background-color: #ffb700;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+}
+
+.form_submit button:hover {
+  box-shadow: 0px 0px 20px white;
+}

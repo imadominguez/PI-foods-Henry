@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import * as action from "../../redux/actions";
 import s from "./Detail.module.css";
+import ModalForm from "./ModalForm";
 const { default: axios } = require("axios");
 
 const Detail = () => {
   const { id, dataBase } = useParams();
   const [detailrecipe, setdetailrecipe] = useState({});
   const [loading, setLoading] = useState(true);
+  const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
   console.log(detailrecipe);
@@ -23,15 +25,6 @@ const Detail = () => {
     history.push("/home");
     dispatch(action.deleteRecipe(id));
   };
-
-  const handleSubmit = (e) => {
-    e.prevetDefault();
-    dispatch(action.updateRecipe(detailrecipe, id));
-  };
-  const handleInputChange = (e) => {
-    setdetailrecipe({ ...detailrecipe, [e.target.name]: e.target.value });
-  };
-  const handleCheckbox = () => {};
 
   const getDetail = async (id, dataBase) => {
     await axios
@@ -58,55 +51,62 @@ const Detail = () => {
   } else {
     return (
       <div className={s.container_detail}>
-        <div className={s.container}>
-          <div className={s.image}>
-            <div className={s.image_container}>
-              <img
-                src={
-                  detailrecipe.image
-                    ? detailrecipe.image
-                    : "https://via.placeholder.com/150"
-                }
-                className={s.img}
-                alt={detailrecipe.title}
-              />
+        {modal && <ModalForm recipe={detailrecipe} />}
+        {!modal && (
+          <>
+            <div className={s.container}>
+              <div className={s.image}>
+                <div className={s.image_container}>
+                  <img
+                    src={
+                      detailrecipe.image
+                        ? detailrecipe.image
+                        : "https://via.placeholder.com/150"
+                    }
+                    className={s.img}
+                    alt={detailrecipe.title}
+                  />
+                </div>
+              </div>
+              <div className={s.title}>
+                <h1>{detailrecipe.title}</h1>
+              </div>
+              <div className={s.summary}>
+                <p>{parseoHtml(detailrecipe.summary)}</p>
+              </div>
+              <div className={s.helathscore}>
+                <div>{detailrecipe.healthScore}</div>
+                <div>
+                  {detailrecipe.dishTypes?.map((e) => (
+                    <span key={e}>{e}</span>
+                  ))}
+                </div>
+              </div>
+              <div className={s.diets}>
+                {detailrecipe.dataBase
+                  ? detailrecipe.typediets?.map((e) => (
+                      <span key={e.id}>{e.name}</span>
+                    ))
+                  : detailrecipe.diets?.map((e) => <span key={e}>{e}</span>)}
+              </div>
+              <div className={s.instructions}>
+                <p>
+                  {detailrecipe.instructions
+                    ? detailrecipe.instructions
+                    : detailrecipe.stepByStep}
+                </p>
+              </div>
             </div>
-          </div>
-          <div className={s.title}>
-            <h1>{detailrecipe.title}</h1>
-          </div>
-          <div className={s.summary}>
-            <p>{parseoHtml(detailrecipe.summary)}</p>
-          </div>
-          <div className={s.helathscore}>
-            <div>{detailrecipe.healthScore}</div>
-            <div>
-              {detailrecipe.dishTypes?.map((e) => (
-                <span key={e}>{e}</span>
-              ))}
+            <div className={s.button_container}>
+              {detailrecipe.dataBase && (
+                <button onClick={() => deleteRecipe(id)}>Eliminar</button>
+              )}
+              {detailrecipe.dataBase && (
+                <button onClick={() => setModal(true)}>Actualizar</button>
+              )}
             </div>
-          </div>
-          <div className={s.diets}>
-            {detailrecipe.dataBase
-              ? detailrecipe.typediets?.map((e) => (
-                  <span key={e.id}>{e.name}</span>
-                ))
-              : detailrecipe.diets?.map((e) => <span key={e}>{e}</span>)}
-          </div>
-          <div className={s.instructions}>
-            <p>
-              {detailrecipe.instructions
-                ? detailrecipe.instructions
-                : detailrecipe.stepByStep}
-            </p>
-          </div>
-        </div>
-        <div className={s.button_container}>
-          {detailrecipe.dataBase && (
-            <button onClick={() => deleteRecipe(id)}>Eliminar</button>
-          )}
-          {detailrecipe.dataBase && <button>Actualizar</button>}
-        </div>
+          </>
+        )}
       </div>
     );
   }

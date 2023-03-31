@@ -21,13 +21,13 @@ const Pagination = () => {
 
   const handlePageButton = (e) => {
     if (e === "aument") {
-      if (page == totalPages) {
+      if (page === totalPages) {
         setPage(1);
       } else {
         setPage(page + 1);
       }
     } else {
-      if (page == 1) {
+      if (page === 1) {
         setPage(totalPages);
       } else {
         setPage(page - 1);
@@ -53,6 +53,7 @@ const Pagination = () => {
             className={`${s.button} ${page === element && `${s.active}`}`}
             onClick={handlePage}
             value={element}
+            key={index}
           >
             {element}
           </button>
@@ -68,7 +69,6 @@ const Pagination = () => {
       <div className={s.cards_container}>
         {!recipes.length && !filters.length ? (
           <div className={s.container_loading}>
-            {console.log("loader")}
             <span className={s.loader}></span>
           </div>
         ) : (

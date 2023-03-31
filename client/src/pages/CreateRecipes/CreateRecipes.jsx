@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import * as action from "../../redux/actions";
 import s from "./CreateRecipes.module.css";
 import Validation from "./Validation";
 const { default: axios } = require("axios");
 
 const CreateRecipes = (props) => {
+  const history = useHistory();
   const [userData, setUserData] = useState({
     title: "",
     summary: "",
@@ -23,7 +25,7 @@ const CreateRecipes = (props) => {
   const dispatch = useDispatch();
   const diets = useSelector((state) => state.diets);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (
       errors.title === "" &&
@@ -31,7 +33,7 @@ const CreateRecipes = (props) => {
       errors.healthScore === 0 &&
       errors.stepByStep === ""
     ) {
-      axios
+      await axios
         .post("http://localhost:3001/recipes", userData)
         .then((res) => alert("receta creada correctamente"))
         .catch((error) => console.log(error.message));
@@ -43,6 +45,7 @@ const CreateRecipes = (props) => {
         dataBase: true,
         dietsTypes: [],
       });
+      history.push("/home");
     } else {
       console.log("Te faltan datos para enviar");
     }

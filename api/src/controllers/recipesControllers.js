@@ -118,10 +118,10 @@ const deleteRecipe = async (id) => {
 };
 
 const updateRecipe = async (receta, id) => {
-  console.log(receta.dietsTypes);
+  console.log(receta.dietTypes);
   const actualize = await Recipe.update(receta, { where: { id: id } });
   const actualizeRecipeDiets = await Recipe.findByPk(id);
-  await actualizeRecipeDiets.setTypediets(receta.dietsTypes);
+  await actualizeRecipeDiets.setTypediets(receta.dietTypes);
   return actualize;
 };
 

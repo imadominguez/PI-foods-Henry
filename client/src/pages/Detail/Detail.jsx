@@ -14,7 +14,6 @@ const Detail = () => {
   const [modal, setModal] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
-  console.log(detailrecipe);
   const parseoHtml = (text) => {
     const pattern = /<[^>]*>/gi;
     const parseo = text?.replace(pattern, "");
@@ -39,19 +38,23 @@ const Detail = () => {
       setTimeout(() => setLoading(false), 1500);
     }
     getRecipe();
-  }, []);
+  }, [id, dataBase]);
 
   if (loading) {
     return (
       <div className={s.container_loading}>
-        {console.log("loader")}
         <span className={s.loader}></span>
       </div>
     );
   } else {
     return (
       <div className={s.container_detail}>
-        {modal && <ModalForm recipe={detailrecipe} />}
+        {modal && (
+          <ModalForm
+            setdetailrecipe={setdetailrecipe}
+            detailrecipe={detailrecipe}
+          />
+        )}
         {!modal && (
           <>
             <div className={s.container}>
